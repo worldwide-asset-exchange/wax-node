@@ -6,21 +6,42 @@ Requisites:
 
 Review _nodeos/config/config.ini_ to adjust the configuration as needed. The provided config is sufficient to run a typical non-producing node with only the minimal plugins.
 
-For a fresh WAX node instance run from snapshot first
-
-```
-$ ./start-from-snapshot.sh
-```
-
-For subsequent runs do
+To run the WAX node instance, run the following:
 
 ```
 $ ./start.sh
 ```
 
+Note that if this is a fresh WAX node (Ie. the instance has never synced before), it will first download a current snapshot of the WAX blockchain and restore from that, which will take some time to initialize.
+
 Once nodeos is running you can use curl to validate everything is working as expected.
 ```
 $ curl http://localhost:8888/v1/chain/get_info
+```
+
+You can manually stop the instance, like so:
+
+```
+$ ./stop.sh
+```
+
+You can also wipe out the current blockchain DB so as to start from scratch (for example in the event of a corrupted blockchain db) by running:
+
+```
+$ ./reset.sh
+```
+
+## Systemd Service
+
+Run the wax node as a systemd service by copying this repo into /opt/wax, copying the wax.service file into /etc/systemd/system and then regestering the service. For example:
+
+```
+$ cd into/this/repo
+$ sudo mkdir /opt/wax
+$ sudo cp -r . /opt/wax/
+$ sudo cp ./wax.service /etc/systemd/system/wax.service
+$ sudo systemctl enable wax
+$ sudo service wax start
 ```
 
 ## Configuration Details
@@ -46,3 +67,8 @@ This configuration has the following plugins already configured:
 * `plugin = eosio::http_plugin`
 * `plugin = eosio::net_plugin`
 * `plugin = eosio::db_size_api_plugin`
+
+
+## Using AWS Notes
+
+* Instances should have at least 7K (preferably 10K) IOPS on the volume storing the blockchain data
