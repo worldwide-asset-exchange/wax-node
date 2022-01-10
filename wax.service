@@ -1,0 +1,16 @@
+[Unit]
+Description=wax-node
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=10
+TimeoutStopSec=30
+Restart=always
+ExecStartPre=/opt/wax/stop.sh
+ExecStart=/opt/wax/start.sh
+ExecStop=/opt/wax/stop.sh
+Environment="HOST_WAX_HOME=/opt/wax"
+
+[Install]
+WantedBy=multi-user.target
