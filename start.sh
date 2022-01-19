@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+WAX_VERSION=v2.0.13wax01sc
+
 # Home inside docker
 NODEOS_HOME=/root/.local/share/eosio/nodeos
 
@@ -24,7 +26,7 @@ function start_from_snapshot {
       -v $HOST_WAX_HOME/nodeos/config:$NODEOS_HOME/config \
       -p 127.0.0.1:8888:8888 \
       -p 9876:9876 \
-      waxteam/production:v2.0.5wax01 \
+      waxteam/production:$WAX_VERSION \
       nodeos --verbose-http-errors --disable-replay-opts --snapshot $NODEOS_HOME/data/$SNAPSHOT
 }
 
@@ -34,7 +36,7 @@ function start_standard {
       -v $HOST_WAX_HOME/nodeos/config:$NODEOS_HOME/config \
       -p 127.0.0.1:8888:8888 \
       -p 9876:9876 \
-      waxteam/production:v2.0.5wax01 \
+      waxteam/production:$WAX_VERSION \
       nodeos --genesis-json $NODEOS_HOME/config/genesis.json
 }
 
