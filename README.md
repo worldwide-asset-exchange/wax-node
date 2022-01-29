@@ -31,6 +31,8 @@ You can also wipe out the current blockchain DB so as to start from scratch (for
 $ ./reset.sh
 ```
 
+See the [API](./API.md) information to get started interacting with your WAX node.
+
 ## Systemd Service
 
 Run the wax node as a systemd service by copying this repo into /opt/wax, copying the wax.service file into /etc/systemd/system and then regestering the service. For example:
@@ -72,3 +74,7 @@ This configuration has the following plugins already configured:
 ## Using AWS Notes
 
 * Instances should have at least 7K (preferably 10K) IOPS on the volume storing the blockchain data
+
+## Working With Your WAX Node
+
+See the [API](./API.md) information to get started interacting with your WAX node.
