@@ -33,6 +33,8 @@ $ ./reset.sh
 
 See the [API](./API.md) information to get started interacting with your WAX node.
 
+For specific integrations notes, please see [integrations](./INTEGRATIONS.md)
+
 ## Systemd Service
 
 Run the wax node as a systemd service by copying this repo into /opt/wax, copying the wax.service file into /etc/systemd/system and then regestering the service. For example:
