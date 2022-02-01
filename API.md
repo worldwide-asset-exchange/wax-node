@@ -4,6 +4,8 @@ Interacting With Your WAX Node/WAX Node API options
 Requisites:
 - Have a [running WAX node](./README.md#running-a-wax-node)
 
+For specific integrations notes, please see [integrations](./INTEGRATIONS.md)
+
 ## Blockchain Explorer
 
 The standard blockchain explorer can be found here: https://wax.bloks.io/
