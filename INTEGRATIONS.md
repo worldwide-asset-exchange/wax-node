@@ -23,7 +23,7 @@ Assuming your exchange/sponsor account is `exchange1111`, and the user was instr
 $ cleos push action eosio.token transfer '{"from": "exchange1111", "to": "newuser.wax", "quantity": "5.00000000 WAX", "memo": "1a1a1a.wam"}' -p exchange1111
 ```
 
-NOTE 1: Valid wam accounts will always end in `.wam`, and may contain any of the following characters in the prefix: ".abcdefghijklmnopqrstuvwxyz12345", so please adjust your memo sanitizers to accomodate this.
+NOTE 1: Valid wam accounts will always end in `.wam`, and may contain any of the following characters in the prefix: ".abcdefghijklmnopqrstuvwxyz12345", so please adjust your memo sanitizers to accomodate this. Realize that you don't have to be strict about what goes in the memo since a memo can have ANY alphanumeric character in it when sending to non-`newuser.wax` accounts. The main thing is to not reject the request if the memo contains any of these prefix characters.
 
 NOTE 2: If a user sends less than the required 5 WAX to create their account, the newuser.wax contract will reject the transaction and it will fail when the transaction is attempted for braodcast. Be sure to build your logic to accept failed transactions and to not deduct WAX from exchange accounts on failed withdrawal attempts. Also, users should be aware that if a withdrawal fee is required by your dApp/exchange, the user must incoporate that amount over and above their account creation fee of 5 WAX. For example if the withdrawal fee is 1 WAX, the user must withdraw 6 WAX to successfully create an account
 
