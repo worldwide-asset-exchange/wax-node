@@ -38,3 +38,23 @@ IF you choose to sanitize the memo field for withdrawals to the newuser.wax acco
 If a user sends less than the required 5 WAX to create their account, the newuser.wax contract will reject the transaction and it will fail when the transaction is attempted for braodcast. Be sure to build your logic to accept failed transactions and to not deduct WAX from exchange accounts on failed withdrawal attempts. Also, users should be aware that if a withdrawal fee is required by your dApp/exchange, the user must incoporate that amount over and above their account creation fee of 5 WAX. For example if the withdrawal fee is 1 WAX, the user must withdraw 6 WAX to successfully create an account
 
 If a user sends more than the minimum needed to create their account, the excess will be depositted immediately on their newly created account. In this way, it is not possible for a user to overpay their account creation amount.
+
+### Sponsored Account Creation/dApp Operators
+
+For services that wish to create accounts on behalf of their users, an idempotent account creation mode is available called `refund_on_exists`. In this mode, any transferred funds will be immediately returned to the sender if the target account to create already exists. If the sender sends greater than the account creation cost of 5 WAX, the change will be returned to the sender. This allows dApp operators to send a `refund_on_exists` action ahead of any user interactions to ensure account creation and not worry about whether or not the account already exists.
+
+Realize that for users who have a WAX All Access account but have not yet generated a blockchain account, still have a reserved blockahain account name that you can read in their waxjs [login](https://github.com/worldwide-asset-exchange/waxjs#2-login) information as usual, despite not having their blockchain account generated yet. This allows you to ensure that a user's account will exist so long as you send using the idempotent `refund_on_exists` mode as the first action in your transaction.
+
+Exchange operators will generally not want to use the `refund_on_exists` mode.
+
+The format for the `refund_on_exists` mode is the same as the regular/default newuser.wax account creation transfer with a slight midification in the memo as follows:
+
+`<*.wam account>:refund_on_exists`
+
+Example:
+
+Assuming your dApp account is `dapp11111111`, and waxjs logs in account (or the user was intructed to create account) `1a1a1a.wam`
+```
+$ cleos push action eosio.token transfer '{"from": "dapp11111111", "to": "newuser.wax", "quantity": "5.00000000 WAX", "memo": "1a1a1a.wam:refund_on_exists"}' -p dapp11111111
+```
+
