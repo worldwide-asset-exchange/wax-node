@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WAX_VERSION=v2.0.13wax01sc
+WAX_VERSION=v2.0.13wax03
 
 # Home inside docker
 NODEOS_HOME=/root/.local/share/eosio/nodeos
