@@ -75,7 +75,7 @@ This configuration has the following plugins already configured:
 
 ## Using AWS Notes
 
-* Instances should have at least 7K (preferably 10K) IOPS on the volume storing the blockchain data
+* Use r5n.2xlarge or r5n.3xlarge with 10K provisioned IOPS on the volume storing the blockchain data
 
 ## Working With Your WAX Node
 
