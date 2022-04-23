@@ -58,3 +58,11 @@ Assuming your dApp account is `dapp11111111`, and waxjs logs in account (or the 
 $ cleos push action eosio.token transfer '{"from": "dapp11111111", "to": "newuser.wax", "quantity": "5.00000000 WAX", "memo": "1a1a1a.wam:refund_on_exists"}' -p dapp11111111
 ```
 
+## Accepting Deposits
+
+Exchange operators and other services need to accept WAX deposits to perform operations on off-chain platforms. Typically an excchange will have a well known acccount on the WAX chain, like `exchange1111`. The most common deposit acceptance pattern involves associating a unique deposit memo string with every exchange user. The string should never change for any given user so that a user can reliably send to the exchange deposit account with the same memo value for all future deposits.
+
+Exchanges should only process transactions in blocks that have already become irreversible. This can be determined by regularly querying the [latest block height](https://github.com/worldwide-asset-exchange/wax-node/blob/master/API.md#latest-block-height) RPC method, and only requesting blocks for processing that are less than or equal to the `last_irreversible_block_num` value via the [get block](https://github.com/worldwide-asset-exchange/wax-node/blob/master/API.md#get-a-block) RPC API. For improved UX, transactions received in reversible blocks maybe used to provide a quick confirmation that a user's transaction has been recognized but these transactions should never be applied to internal database balances until they are fully irreversible. Reversible transactions have a chance of becoming forked out of chain history for a number of reasons.
+
+Exchange operators should provide visual queues to users about the deposit requirements, such as the unique memo field required to route the deposit to their account. Also, exchange operators should generally inform users to use basic deposit transactions to their deposit account that comes directly from a user's account to the exchange with no use of the eosio multisignature contract, and with no use of a smart contract that would send the deposit on a user's behalf. These kinds of transactions require extra overhead for an exchange to process that will generally not be worth the extra effort. 
+
