@@ -1,6 +1,17 @@
 Running a WAX node
 ===================
 
+
+## Upgrading Your WAX Node to Version 3.xx (Leap/Antelope Upgrade)
+
+Prior to the system wide activation of the version 3.xx/Leap upgrade to the WAX core blockchain code, all operators should setup a new WAX node as per the instructions that follow. The process is exactly the same as it was prior to the 3.xx upgrade.
+
+Once the new 3.xx node is synchronized to mainnet, point your internal infrastructure to your new 3.xx WAX node. When internal services are correctly operating it is safe to decommission your previous WAX node.
+
+Your 3.xx node will correctly run the pre-upgrade 2.xx WAX blockchain, and safely activate the new WAX blockchain features once the system wide 3.xx activation is complete.
+
+## Operation
+
 Requisites:
 - Docker (configured to run without sudo)
 
