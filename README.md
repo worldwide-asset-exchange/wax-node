@@ -4,7 +4,7 @@ Running a WAX node
 
 ## Upgrading Your WAX Node to Version 3.xx (Leap/Antelope Upgrade)
 
-Wax Blockchain mainnet will be upgrading to Antelope 3.xx version on Match 27, 2022 at 6 pm UTC; estimated blockheight 236,944,197
+Wax Blockchain mainnet will be upgrading to Antelope 3.xx version on Match 27, 2023 at 6 pm UTC; estimated blockheight 236,944,197
 
 Prior to the system wide activation of the version 3.xx/Leap upgrade to the WAX core blockchain code, all operators should setup a new WAX node as per the instructions that follow. The process is exactly the same as it was prior to the 3.xx upgrade.
 
