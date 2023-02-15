@@ -4,6 +4,8 @@ Running a WAX node
 
 ## Upgrading Your WAX Node to Version 3.xx (Leap/Antelope Upgrade)
 
+Wax Blockchain mainnet will be upgrading to Antelope 3.xx version on Match 27, 2022 at 6 pm UTC; estimated blockheight 236,944,197
+
 Prior to the system wide activation of the version 3.xx/Leap upgrade to the WAX core blockchain code, all operators should setup a new WAX node as per the instructions that follow. The process is exactly the same as it was prior to the 3.xx upgrade.
 
 **Clone or checkout the latest version of this repo and run the `start.sh` script on your host as per usual (also see below), and the script will automatically fetch the latest docker image for the upgraded 3.xx chain. For reference, the latest stable wax-node docker image is [here](https://hub.docker.com/layers/waxteam/waxnode/v3.1.3wax01/images/sha256-91e9769f4ba9e608135ca21cbce350f9c34a1a876a970a538e11900ec19e1582?context=explore).**
