@@ -8,7 +8,7 @@ Wax Blockchain mainnet will be upgrading to Antelope 3.xx version on March 27, 2
 
 Prior to the system wide activation of the version 3.xx/Leap upgrade to the WAX core blockchain code, all operators should setup a new WAX node as per the instructions that follow. The process is exactly the same as it was prior to the 3.xx upgrade.
 
-**Clone or checkout the latest version of this repo and run the `start.sh` script on your host as per usual (also see below), and the script will automatically fetch the latest docker image for the upgraded 3.xx chain. For reference, the latest stable wax-node docker image is [here](https://hub.docker.com/layers/waxteam/waxnode/v3.1.3wax01/images/sha256-91e9769f4ba9e608135ca21cbce350f9c34a1a876a970a538e11900ec19e1582?context=explore).**
+**Clone or checkout the latest version of this repo and run the `start.sh` script on your host as per usual (also see below), and the script will automatically fetch the latest docker image for the upgraded 3.xx chain. For reference, the latest stable wax-node docker image is [here](https://hub.docker.com/layers/waxteam/waxnode/v3.1.3wax02/images/sha256-b15b8733fc8a84eab0e157f9b7a86e716b1d4587af69a11efa29e8d952ed5d90?context=explore).**
 
 Once the new 3.xx node is synchronized to mainnet, point your internal infrastructure to your new 3.xx WAX node. When internal services are correctly operating it is safe to decommission your previous WAX node.
 
