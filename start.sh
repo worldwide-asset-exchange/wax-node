@@ -24,7 +24,7 @@ function start_from_snapshot {
   docker run -t --sig-proxy=true --name nodeos \
       -v $HOST_WAX_HOME/nodeos/data:$NODEOS_HOME/data \
       -v $HOST_WAX_HOME/nodeos/config:$NODEOS_HOME/config \
-      -p 127.0.0.1:8888:8888 \
+      -p 0.0.0.0:8888:8888 \
       -p 9876:9876 \
       waxteam/waxnode:$WAX_VERSION \
       nodeos --verbose-http-errors --disable-replay-opts --snapshot $NODEOS_HOME/data/$SNAPSHOT
@@ -34,7 +34,7 @@ function start_standard {
   docker run -t --sig-proxy=true --name nodeos \
       -v $HOST_WAX_HOME/nodeos/data:$NODEOS_HOME/data \
       -v $HOST_WAX_HOME/nodeos/config:$NODEOS_HOME/config \
-      -p 127.0.0.1:8888:8888 \
+      -p 0.0.0.0:8888:8888 \
       -p 9876:9876 \
       waxteam/waxnode:$WAX_VERSION \
       nodeos --genesis-json $NODEOS_HOME/config/genesis.json
