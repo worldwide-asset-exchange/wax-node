@@ -11,6 +11,8 @@ ExecStartPre=/opt/wax/stop.sh
 ExecStart=/opt/wax/start.sh
 ExecStop=/opt/wax/stop.sh
 Environment="HOST_WAX_HOME=/opt/wax"
+StandardOutput=file:/var/log/wax/logs.log
+StandardError=file:/var/log/wax/logs.log
 
 [Install]
 WantedBy=multi-user.target
