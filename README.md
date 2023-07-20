@@ -57,6 +57,7 @@ Run the wax node as a systemd service by copying this repo into /opt/wax, copyin
 ```
 $ cd into/this/repo
 $ sudo mkdir /opt/wax
+$ sudo mkdir /var/log/wax
 $ sudo cp -r . /opt/wax/
 $ sudo cp ./wax.service /etc/systemd/system/wax.service
 $ sudo systemctl enable wax
