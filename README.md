@@ -18,7 +18,7 @@ Your 3.xx node will correctly run the pre-upgrade 2.xx WAX blockchain, and safel
 
 Requisites:
 - Docker (configured to run without sudo)
-
+- zstd (extract the compressed snapshot file)
 Review _nodeos/config/config.ini_ to adjust the configuration as needed. The provided config is sufficient to run a typical non-producing node with only the minimal plugins.
 
 To run the WAX node instance, run the following:
