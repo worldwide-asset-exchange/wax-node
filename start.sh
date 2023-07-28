@@ -58,6 +58,7 @@ function start_ship_nodeos_from_snapshot {
       -v $HOST_WAX_HOME/shipnodeos/data:$NODEOS_HOME/data \
       -v $HOST_WAX_HOME/shipnodeos/config:$NODEOS_HOME/config \
       -p 0.0.0.0:8888:8888 \
+      -p 0.0.0.0:8080:8080 \
       -p 9876:9876 \
       waxteam/waxnode:$WAX_VERSION \
       nodeos --verbose-http-errors --disable-replay-opts --trace-history --chain-state-history --snapshot $NODEOS_HOME/data/$SNAPSHOT
@@ -68,6 +69,7 @@ function start_ship_nodeos {
       -v $HOST_WAX_HOME/shipnodeos/data:$NODEOS_HOME/data \
       -v $HOST_WAX_HOME/shipnodeos/config:$NODEOS_HOME/config \
       -p 0.0.0.0:8888:8888 \
+      -p 0.0.0.0:8080:8080 \
       -p 9876:9876 \
       waxteam/waxnode:$WAX_VERSION \
       nodeos --trace-history --chain-state-history --genesis-json $NODEOS_HOME/config/genesis.json
