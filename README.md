@@ -22,6 +22,7 @@ Requisites:
 
 To operate the WAX node, you have two options, each controlled by specific parameters: -s for "Start From Snapshot" and -e for "Enable Ship Node."
 
+### Run Node
 1. Run a Fresh API WAX Node Instance:
 ```
 $ ./start.sh -s false -e false
@@ -41,15 +42,13 @@ $ ./start.sh -s false -e true
 ```
 $ ./start.sh -s true -e true
 ```
-
-
-Note that if this is a fresh WAX node (Ie. the instance has never synced before), it will first download a current snapshot of the WAX blockchain and restore from that, which will take some time to initialize.
-
+### Check Node Status
 Once nodeos is running you can use curl to validate everything is working as expected.
 ```
 $ curl http://localhost:8888/v1/chain/get_info
 ```
 
+### Stop and Reset waxnode
 You can manually stop the instance, like so:
 
 ```
