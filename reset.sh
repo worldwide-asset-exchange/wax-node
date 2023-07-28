@@ -14,5 +14,7 @@ HOST_WAX_HOME=${HOST_WAX_HOME:-`pwd`}
 ./stop.sh
 sudo rm -rf $HOST_WAX_HOME/nodeos/data
 sudo rm -rf $HOST_WAX_HOME/nodeos/config/protocol_features
+sudo rm -rf $HOST_WAX_HOME/shipnodeos/data
+sudo rm -rf $HOST_WAX_HOME/shipnodeos/config/protocol_features
 
 echo "WAX node reset success"
