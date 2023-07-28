@@ -35,8 +35,8 @@ function start_api_nodeos_from_snapshot {
 
 function start_api_nodeos {
   docker run -t --sig-proxy=true --name nodeos \
-      -v $HOST_WAX_HOME/shipnodeos/data:$NODEOS_HOME/data \
-      -v $HOST_WAX_HOME/shipnodeos/config:$NODEOS_HOME/config \
+      -v $HOST_WAX_HOME/nodeos/data:$NODEOS_HOME/data \
+      -v $HOST_WAX_HOME/nodeos/config:$NODEOS_HOME/config \
       -p 0.0.0.0:8888:8888 \
       -p 9876:9876 \
       waxteam/waxnode:$WAX_VERSION \
@@ -72,7 +72,7 @@ function start_ship_nodeos {
       -p 0.0.0.0:8080:8080 \
       -p 9876:9876 \
       waxteam/waxnode:$WAX_VERSION \
-      nodeos --trace-history --chain-state-history --genesis-json $NODEOS_HOME/config/genesis.json
+      nodeos --disable-replay-opts --trace-history --chain-state-history --genesis-json $NODEOS_HOME/config/genesis.json
 }
 
 while getopts s:e: flag

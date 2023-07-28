@@ -8,7 +8,7 @@ TimeoutStartSec=10
 TimeoutStopSec=30
 Restart=always
 ExecStartPre=/opt/wax/stop.sh
-ExecStart=/opt/wax/start.sh -e true
+ExecStart=/opt/wax/start.sh start.sh -s true -e true
 ExecStop=/opt/wax/stop.sh
 Environment="HOST_WAX_HOME=/opt/wax"
 StandardOutput=file:/var/log/wax/logs.log
