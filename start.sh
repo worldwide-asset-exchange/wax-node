@@ -55,8 +55,8 @@ function start_ship_nodeos_from_snapshot {
   SNAPSHOT="${TGZ_FILES[0]}"
 
   docker run -t --sig-proxy=true --name nodeos \
-      -v $HOST_WAX_HOME/nodeos/data:$NODEOS_HOME/data \
-      -v $HOST_WAX_HOME/nodeos/config:$NODEOS_HOME/config \
+      -v $HOST_WAX_HOME/shipnodeos/data:$NODEOS_HOME/data \
+      -v $HOST_WAX_HOME/shipnodeos/config:$NODEOS_HOME/config \
       -p 0.0.0.0:8888:8888 \
       -p 9876:9876 \
       waxteam/waxnode:$WAX_VERSION \
@@ -87,8 +87,6 @@ do
           ;;
     esac
 done
-echo "startFromSnapshot: $START_FROM_SNAPSHOT";
-echo "enableShipNode: $ENABLE_SHIP_NODE";
 
 if [[ $START_FROM_SNAPSHOT == true ]]; then
     if [[ $ENABLE_SHIP_NODE == true ]]; then
