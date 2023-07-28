@@ -18,14 +18,30 @@ Your 3.xx node will correctly run the pre-upgrade 2.xx WAX blockchain, and safel
 
 Requisites:
 - Docker (configured to run without sudo)
-- zstd (extract the compressed snapshot file)
-Review _nodeos/config/config.ini_ to adjust the configuration as needed. The provided config is sufficient to run a typical non-producing node with only the minimal plugins.
+- zstd (to extract the compressed snapshot file)
 
-To run the WAX node instance, run the following:
+To operate the WAX node, you have two options, each controlled by specific parameters: -s for "Start From Snapshot" and -e for "Enable Ship Node."
 
+1. Run a Fresh API WAX Node Instance:
 ```
-$ ./start.sh
+$ ./start.sh -s false -e false
 ```
+
+1. Run the API WAX Node from a Snapshot:
+```
+$ ./start.sh -s true -e false
+```
+
+1. Run a Fresh API WAX Node with Ship Node Enabled:
+```
+$ ./start.sh -s false -e true
+```
+
+1. Run the API WAX Node with Ship Node Enabled from a Snapshot:
+```
+$ ./start.sh -s true -e true
+```
+
 
 Note that if this is a fresh WAX node (Ie. the instance has never synced before), it will first download a current snapshot of the WAX blockchain and restore from that, which will take some time to initialize.
 
