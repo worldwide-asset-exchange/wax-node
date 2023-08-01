@@ -33,7 +33,7 @@ function start_api_nodeos_from_snapshot {
       nodeos --verbose-http-errors --disable-replay-opts --snapshot $NODEOS_HOME/data/$SNAPSHOT
 }
 
-function start_api_nodeos {
+function start_api_nodeos_stardard {
   docker run -t --sig-proxy=true --name nodeos \
       -v $HOST_WAX_HOME/nodeos/data:$NODEOS_HOME/data \
       -v $HOST_WAX_HOME/nodeos/config:$NODEOS_HOME/config \
@@ -64,7 +64,7 @@ function start_ship_nodeos_from_snapshot {
       nodeos --verbose-http-errors --disable-replay-opts --trace-history --chain-state-history --snapshot $NODEOS_HOME/data/$SNAPSHOT
 }
 
-function start_ship_nodeos {
+function start_ship_nodeos_standard {
   docker run -t --sig-proxy=true --name nodeos \
       -v $HOST_WAX_HOME/shipnodeos/data:$NODEOS_HOME/data \
       -v $HOST_WAX_HOME/shipnodeos/config:$NODEOS_HOME/config \
@@ -90,16 +90,20 @@ do
     esac
 done
 
-if [[ $START_FROM_SNAPSHOT == true ]]; then
-    if [[ $ENABLE_SHIP_NODE == true ]]; then
-      start_ship_nodeos_from_snapshot
-    else
-      start_api_nodeos_from_snapshot
-    fi
+if [ "$ENABLE_SHIP_NODE" == false ]; then
+  if [ -d "$HOST_WAX_HOME/nodeos/data/state" ] || [ $START_FROM_SNAPSHOT == false ]; then
+    echo "start_api_nodeos_stardard"
+    start_api_nodeos_stardard
+  else
+    echo "start_api_nodeos_from_snapshot"
+    start_api_nodeos_from_snapshot
+  fi
 else
-    if [[ $ENABLE_SHIP_NODE == true ]]; then
-      start_ship_nodeos
-    else
-      start_api_nodeos
-    fi
+  if [ -d "$HOST_WAX_HOME/shipnodeos/data/state" ] || [ $START_FROM_SNAPSHOT == false ]; then
+    echo "start_ship_nodeos_standard"
+    start_ship_nodeos_standard
+  else
+    echo "start_ship_nodeos_from_snapshot"
+    start_ship_nodeos_from_snapshot
+  fi
 fi

@@ -74,7 +74,7 @@ $ cd into/this/repo
 $ sudo mkdir /opt/wax
 $ sudo mkdir /var/log/wax
 $ sudo cp -r . /opt/wax/
-$ sudo cp ./wax.service /etc/systemd/system/wax.service
+$ sudo cp ./services/apinode.service /etc/systemd/system/wax.service
 $ sudo systemctl enable wax
 $ sudo service wax start
 ```
