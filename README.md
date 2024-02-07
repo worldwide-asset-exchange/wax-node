@@ -65,6 +65,34 @@ See the [API](./API.md) information to get started interacting with your WAX nod
 
 For specific integrations notes, please see [integrations](./INTEGRATIONS.md)
 
+### Run snapshot node
+
+Run API node sync to designated block height X so that you can query state of block chain up to block X.
+
+API node sync from genesis to block height X
+```bash
+./start-snapshot.sh -t <block height>
+```
+
+API node sync from snapshot file url
+
+```bash
+./start-snapshot.sh -u <snapshot url> -t <block height>
+```
+
+Query block chain state up to block X
+
+```bash
+$ cleos get info
+$ cleos get table eosio.token WAX stat
+```
+
+It may take a long time to initialize from large snapshot file, you can check docker log to get status
+
+```bash
+$ docker logs nodeos
+```
+
 ## Systemd Service
 
 Run the wax node as a systemd service by copying this repo into /opt/wax, copying the wax.service file into /etc/systemd/system and then regestering the service. For example:
