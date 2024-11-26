@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WAX_VERSION=v3.1.5wax01
+WAX_VERSION=v5.0.3wax01
 
 START_FROM_SNAPSHOT=true
 ENABLE_SHIP_NODE=false
