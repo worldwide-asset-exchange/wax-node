@@ -10,7 +10,7 @@ NODEOS_HOME=/root/.local/share/eosio/nodeos
 # WAX data folder root on the host running this docker image
 HOST_WAX_HOME=${HOST_WAX_HOME:-`pwd`}
 
-TESTNET_SNAPHOT=https://snapshots-cdn.eossweden.org/wax-testnet/leap-3.1/
+TESTNET_SNAPHOT=https://snapshots-cdn.eossweden.org/wax-testnet/5.x/
 FILE_NAME=latest
 
 function start_api_nodeos_from_snapshot {
