@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WAX_VERSION=v3.1.5wax01
+WAX_VERSION=v5.0.3wax02
 
 START_FROM_SNAPSHOT=true
 ENABLE_SHIP_NODE=false
@@ -10,8 +10,8 @@ NODEOS_HOME=/root/.local/share/eosio/nodeos
 # WAX data folder root on the host running this docker image
 HOST_WAX_HOME=${HOST_WAX_HOME:-`pwd`}
 
-MAINNET_SNAPHOT=https://eph-snapshots.waxpub.net/wax/
-FILE_NAME=latest.bin.zst
+MAINNET_SNAPHOT=https://snapshots-cdn.eossweden.org/wax/5.x/
+FILE_NAME=latest
 
 function start_api_nodeos_from_snapshot {
   mkdir -p $HOST_WAX_HOME/nodeos/data/
@@ -19,7 +19,7 @@ function start_api_nodeos_from_snapshot {
   rm *.bin
   rm $FILE_NAME
   wget $MAINNET_SNAPHOT$FILE_NAME
-  unzstd $FILE_NAME
+  tar -xvzf $FILE_NAME
   rm $FILE_NAME
   TGZ_FILES=( *.bin )
   SNAPSHOT="${TGZ_FILES[0]}"
@@ -49,7 +49,7 @@ function start_ship_nodeos_from_snapshot {
   rm *.bin
   rm $FILE_NAME
   wget $MAINNET_SNAPHOT$FILE_NAME
-  unzstd $FILE_NAME
+  tar -xvzf $FILE_NAME
   rm $FILE_NAME
   TGZ_FILES=( *.bin )
   SNAPSHOT="${TGZ_FILES[0]}"
