@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WAX_VERSION=v3.1.5wax01
+WAX_VERSION=v5.0.3wax02
 
 SYNC_TO_BLOCK_HEIGHT=291445188
 SNAPSHOT_URL=""
@@ -16,8 +16,8 @@ function start_api_nodeos_from_snapshot {
   rm *.bin
   rm *.zst
   wget $SNAPSHOT_URL
-  unzstd *.zst
-  rm *.zst
+  tar -xvzf latest
+  rm latest
   TGZ_FILES=( *.bin )
   SNAPSHOT="${TGZ_FILES[0]}"
 
