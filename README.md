@@ -139,3 +139,7 @@ This configuration has the following plugins already configured:
 ## Working With Your WAX Node
 
 See the [API](./API.md) information to get started interacting with your WAX node.
+
+## Desposit and Withdrawal Application  With Your WAX Node
+
+See the [Deposit and Withdrawal Application](https://github.com/worldwide-asset-exchange/wax-deposit-withdrawal) to track and respond to withdrawals and deposits with your WAX node.
