@@ -2,8 +2,9 @@
 
 WAX_VERSION=v5.0.3wax02
 
-SYNC_TO_BLOCK_HEIGHT=291445188
-SNAPSHOT_URL=""
+SYNC_TO_BLOCK_HEIGHT=390757000
+SNAPSHOT_URL=https://snapshots-cdn.eossweden.org/wax/5.x/
+FILE_NAME=""
 
 # Home inside docker
 NODEOS_HOME=/root/.local/share/eosio/nodeos
@@ -15,9 +16,9 @@ function start_api_nodeos_from_snapshot {
   cd $HOST_WAX_HOME/snapshotnodeos/data/
   rm *.bin
   rm *.zst
-  wget $SNAPSHOT_URL
-  tar -xvzf latest
-  rm latest
+  wget $SNAPSHOT_URL$FILE_NAME
+  tar -xvzf $FILE_NAME
+  rm $FILE_NAME
   TGZ_FILES=( *.bin )
   SNAPSHOT="${TGZ_FILES[0]}"
 
@@ -48,7 +49,7 @@ while getopts t:u: flag
 do
     case "${flag}" in
         t) SYNC_TO_BLOCK_HEIGHT=${OPTARG};;
-        u) SNAPSHOT_URL=${OPTARG};;
+        u) FILE_NAME=${OPTARG};;
         ?)
           echo "script usage: $(basename $0) [-s true/false] [-e true/false]" >&2
           echo "options:"
@@ -59,7 +60,7 @@ do
     esac
 done
 
-if [ "$SNAPSHOT_URL" == "" ]; then
+if [ "$FILE_NAME" == "" ]; then
   start_api_nodeos_stardard
 else
   start_api_nodeos_from_snapshot

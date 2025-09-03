@@ -22,6 +22,8 @@ Requisites:
 
 To operate the WAX node, you have two options, each controlled by specific parameters: -s for "Start From Snapshot" and -e for "Enable Ship Node."
 
+***NOTE*** Operate WAX node from snapshot may take several hours to download and initialization
+
 ### Run Node
 1. Run a Fresh API WAX Node Instance:
 ```
@@ -74,10 +76,10 @@ API node sync from genesis to block height X
 ./start-snapshot.sh -t <block height>
 ```
 
-API node sync from snapshot file url
+API node sync from snapshot file, depending on designated block you want to sync choose your snapshot file in [here](https://snapshots-cdn.eossweden.org/wax/5.x/)
 
 ```bash
-./start-snapshot.sh -u <snapshot url> -t <block height>
+./start-snapshot.sh -u <file name> -t <block height>
 ```
 
 Query block chain state up to block X
