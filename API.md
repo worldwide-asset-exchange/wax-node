@@ -46,7 +46,7 @@ $ curl http://localhost:8888/v1/chain/get_info | jq
                                Dload  Upload   Total   Spent    Left  Speed
 100   806  100   806    0     0    413      0  0:00:01  0:00:01 --:--:--   413
 {
-"server_version": "d3144fbd",
+"server_version": "bad9be92",
 "chain_id": "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4",
 "head_block_num": 163830955,
 "last_irreversible_block_num": 163830738,
@@ -58,10 +58,10 @@ $ curl http://localhost:8888/v1/chain/get_info | jq
 "virtual_block_net_limit": 1048576000,
 "block_cpu_limit": 200000,
 "block_net_limit": 1048576,
-"server_version_string": "v2.0.13wax01",
+"server_version_string": "v1.3.0wax01",
 "fork_db_head_block_num": 163830955,
 "fork_db_head_block_id": "09c3dcab015e43157ca30535ac117ee513d920dbb8308fee924453c6359148a5",
-"server_full_version_string": "v2.0.13wax01-d3144fbd3959c0bfa535fcefc23a5c18f5601d34"
+"server_full_version_string": "v1.3.0wax01-bad9be9266c2f18ed01b94b4401bfb416253b9a4"
 }
 
 ```
@@ -71,7 +71,7 @@ $ curl http://localhost:8888/v1/chain/get_info | jq
 $ docker exec nodeos cleos -u http://localhost:8888 get info
 
 {
-  "server_version": "d3144fbd",
+  "server_version": "bad9be92",
   "chain_id": "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4",
   "head_block_num": 163830997,
   "last_irreversible_block_num": 163830738,
@@ -83,10 +83,10 @@ $ docker exec nodeos cleos -u http://localhost:8888 get info
   "virtual_block_net_limit": 1048576000,
   "block_cpu_limit": 200000,
   "block_net_limit": 1048576,
-  "server_version_string": "v2.0.13wax01",
+  "server_version_string": "v1.3.0wax01",
   "fork_db_head_block_num": 163830997,
   "fork_db_head_block_id": "09c3dcd5e9926312607eebb90970640e9485b7d4b340d0d541eb3cff6dc5d17f",
-  "server_full_version_string": "v2.0.13wax01-d3144fbd3959c0bfa535fcefc23a5c18f5601d34"
+  "server_full_version_string": "v1.3.0wax01-bad9be9266c2f18ed01b94b4401bfb416253b9a4"
 }
 ```
 
