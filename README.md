@@ -2,17 +2,15 @@ Running a WAX node
 ===================
 
 
-## Upgrading Your WAX Node to Version 3.xx (Leap/Antelope Upgrade)
+## Node Version
 
-Wax Blockchain mainnet will be upgrading to Antelope 3.xx version on March 27, 2023 at 6 pm UTC; estimated blockheight 236,944,197
+This repo currently targets the **Antelope Spring Community Edition** line, image tag `ce-v1.0.3wax01` (nodeos `v1.3.0wax01`). This is the successor to the older Antelope Leap 5.0 line (`v5.0.x`). The pinned tag lives in the `WAX_VERSION` variable at the top of `start.sh` / `start-snapshot.sh` and can be overridden without editing the scripts:
 
-Prior to the system wide activation of the version 3.xx/Leap upgrade to the WAX core blockchain code, all operators should setup a new WAX node as per the instructions that follow. The process is exactly the same as it was prior to the 3.xx upgrade.
+```
+$ WAX_VERSION=ce-v1.0.3wax01 ./start.sh -s true -e false
+```
 
-**Clone or checkout the latest version of this repo and run the `start.sh` script on your host as per usual (also see below), and the script will automatically fetch the latest docker image for the upgraded 3.xx chain. For reference, the latest stable wax-node docker image is [here](https://hub.docker.com/layers/waxteam/waxnode/v3.1.3wax02/images/sha256-b15b8733fc8a84eab0e157f9b7a86e716b1d4587af69a11efa29e8d952ed5d90?context=explore).**
-
-Once the new 3.xx node is synchronized to mainnet, point your internal infrastructure to your new 3.xx WAX node. When internal services are correctly operating it is safe to decommission your previous WAX node.
-
-Your 3.xx node will correctly run the pre-upgrade 2.xx WAX blockchain, and safely activate the new WAX blockchain features once the system wide 3.xx activation is complete.
+Published image tags are listed on [Docker Hub](https://hub.docker.com/r/waxteam/waxnode/tags). To upgrade, set `WAX_VERSION` to a newer published tag, sync the new node, point your internal infrastructure at it, then decommission the old node. Spring CE 1.x is protocol-compatible with the Leap 5.0 line, so a Spring node correctly serves the current mainnet.
 
 ## Operation
 
@@ -20,7 +18,16 @@ Requisites:
 - Docker (configured to run without sudo)
 - zstd (to extract the compressed snapshot file)
 
-To operate the WAX node, you have two options, each controlled by specific parameters: -s for "Start From Snapshot" and -e for "Enable Ship Node."
+Operation is controlled by two flags:
+- `-s true|false` — **Start From Snapshot.** `true` downloads and loads a recent state snapshot (fast); `false` replays from genesis (very slow). Requires `zstd`/`tar` to extract the snapshot file.
+- `-e true|false` — **Enable Ship Node.** `true` runs the heavier State-History (SHIP) node, which also exposes the SHIP websocket on port 8080.
+
+Exposed ports:
+- `8888` — HTTP RPC API (chain queries, transaction push)
+- `8080` — SHIP websocket (**only** when started with `-e true`)
+- `9876` — P2P
+
+**Do you need SHIP (`-e true`)?** Only if you consume the State-History stream. The SHIP-based deposit listener in [wax-deposit-withdrawal](https://github.com/worldwide-asset-exchange/wax-deposit-withdrawal) needs it. A node used only to **send withdrawals** (push transactions via the RPC API) does **not** need SHIP — run it with `-e false` to avoid the extra disk and memory cost.
 
 ***NOTE*** Operate WAX node from snapshot may take several hours to download and initialization
 
@@ -77,6 +84,8 @@ API node sync from genesis to block height X
 ```
 
 API node sync from snapshot file, depending on designated block you want to sync choose your snapshot file in [here](https://snapshots-cdn.eossweden.org/wax/5.x/)
+
+> **Snapshot must match the node's version line.** `start.sh`/`start-snapshot.sh` pull from the `wax/5.x/` path, which is the newest snapshot line published by this provider. The Spring CE 1.x node loads `5.x`-line snapshots (Spring 1.0 is the in-place successor to Leap 5.0 and reads its snapshot format). If you pin a different `WAX_VERSION`, confirm the snapshot line is compatible with that nodeos version before using it.
 
 ```bash
 ./start-snapshot.sh -u <file name> -t <block height>
