@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WAX_VERSION=${WAX_VERSION:-ce-v1.0.3wax01}
+WAX_VERSION=${WAX_VERSION:-ce-v1.3.1wax01}
 
 SYNC_TO_BLOCK_HEIGHT=390757000
 SNAPSHOT_URL=https://snapshots-cdn.eossweden.org/wax/5.x/

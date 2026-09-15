@@ -4,10 +4,10 @@ Running a WAX node
 
 ## Node Version
 
-This repo currently targets the **Antelope Spring Community Edition** line, image tag `ce-v1.0.3wax01` (nodeos `v1.3.0wax01`). This is the successor to the older Antelope Leap 5.0 line (`v5.0.x`). The pinned tag lives in the `WAX_VERSION` variable at the top of `start.sh` / `start-snapshot.sh` and can be overridden without editing the scripts:
+This repo currently targets the **Antelope Spring Community Edition** line, image tag `ce-v1.3.1wax01` (nodeos `v1.3.1wax01`). This is the successor to the older Antelope Leap 5.0 line (`v5.0.x`). The pinned tag lives in the `WAX_VERSION` variable at the top of `start.sh` / `start-snapshot.sh` and can be overridden without editing the scripts:
 
 ```
-$ WAX_VERSION=ce-v1.0.3wax01 ./start.sh -s true -e false
+$ WAX_VERSION=ce-v1.3.1wax01 ./start.sh -s true -e false
 ```
 
 Published image tags are listed on [Docker Hub](https://hub.docker.com/r/waxteam/waxnode/tags). To upgrade, set `WAX_VERSION` to a newer published tag, sync the new node, point your internal infrastructure at it, then decommission the old node. Spring CE 1.x is protocol-compatible with the Leap 5.0 line, so a Spring node correctly serves the current mainnet.

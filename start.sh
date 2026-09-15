@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WAX_VERSION=${WAX_VERSION:-ce-v1.0.3wax01}
+WAX_VERSION=${WAX_VERSION:-ce-v1.3.1wax01}
 
 START_FROM_SNAPSHOT=true
 ENABLE_SHIP_NODE=false
